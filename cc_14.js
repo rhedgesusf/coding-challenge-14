@@ -12,17 +12,23 @@ console.log("Task 1: Creating the Base Structure");
 ///////////////////////////////////////////////
 
 console.log("--------------------------------------");
-console.log("Task 2: Adding Employee Cards Dynamically");
+console.log("Task 2: Adding Support TIckets Dynamically");
 
+// create function to dynamically create a customer ticket
 function createTicket(name, description, priority) {
+
+  // get access to the container
   const ticketContainer = document.getElementById("ticketContainer");
 
   if (ticketContainer) {
+    // create a div as base of card
     const card = document.createElement("div");
 
+    // set class and id
     card.setAttribute("class", "ticket-card");
     card.setAttribute("id", "ticketCard");
 
+    // call function to set the main details; this will be reused later with edit/save
     setTicketDetails(card, name, description, priority);
 
     // add a double click listener to the card
@@ -35,7 +41,9 @@ function createTicket(name, description, priority) {
   }
 }
 
+// create function to set the static details of the support ticket; this will be reused later with edit/save
 function setTicketDetails(card, name, description, priority) {
+  // set the static text
   card.innerHTML = `<div><h3>${name}</h3>
       <p>${description}</p>
       <label>${priority}</label>
@@ -54,6 +62,7 @@ function setTicketDetails(card, name, description, priority) {
   card.appendChild(button);
 }
 
+// test data
 createTicket("Joe Johnson", "Password Issue", "High");
 createTicket("Bill Myers", "Cracked Screen", "Medium");
 createTicket("Mike Mob", "Broken Cable", "Low");
@@ -66,17 +75,26 @@ createTicket("Ethan Pitta", "Stolen Laptop", "High");
 console.log("--------------------------------------");
 console.log("Task 3: Converting NodeLists to Arrays for Bulk Updates");
 
+// create function to highlight support tickets with background color
 function highlightCards() {
-  // set background color of all cards to "lightcoral"
+  // get list of all ticket cards
   const cards = document.querySelectorAll(".ticket-card");
 
   if (cards) {
+    // conver to array
     const cardsArray = Array.from(cards);
 
+    // added this so that if you edit a card and change priority, color is correct
+    cardsArray.forEach((card) => {
+      card.style.backgroundColor = "lightgrey";
+    });
+
+    // get the cards with "High" priority
     const highCards = cardsArray.filter(
       (card) => card.querySelector("label").textContent === "High"
     );
 
+    // set background to light red
     highCards.forEach((card) => {
       card.style.backgroundColor = "lightcoral";
     });
