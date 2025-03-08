@@ -75,5 +75,19 @@ if (cards) {
   });
 }
 
+////////////////////////////////////////////////////////////////
+// Task 4: Implementing Ticket Resolution with Event Bubbling //
+////////////////////////////////////////////////////////////////
 
+console.log("--------------------------------------");
+console.log(
+  "Task 4: Implementing Ticket Resolution with Event Bubbling"
+);
+
+// add a click event listener to the parent container
+const ticketContainer = document.getElementById("ticketContainer");
+
+ticketContainer.addEventListener("click", () => {
+  console.log(`Parent Ticket clicked`);
+});
 
