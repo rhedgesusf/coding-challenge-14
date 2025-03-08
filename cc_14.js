@@ -53,7 +53,27 @@ createTicket('Bill Myers', "Cracked Screen", 'Medium')
 createTicket('Mike Mob', "Broken Cable", 'Low')
 createTicket('Ethan Pitta', "Stolen Laptop", 'High')
 
+/////////////////////////////////////////////////////////////
+// Task 3: Converting NodeLists to Arrays for Bulk Updates //
+/////////////////////////////////////////////////////////////
 
+console.log("--------------------------------------");
+console.log("Task 3: Converting NodeLists to Arrays for Bulk Updates");
+
+// set background color of all cards to "lightcoral"
+const cards = document.querySelectorAll(".ticket-card");
+
+if (cards) {
+  const cardsArray = Array.from(cards);
+
+  const highCards = cardsArray.filter(card => 
+    card.querySelector("label").textContent === "High"
+  )
+
+  highCards.forEach((card) => {
+    card.style.backgroundColor = "lightcoral";
+  });
+}
 
 
 
