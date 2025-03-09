@@ -86,17 +86,14 @@ function highlightCards() {
 
     // added this so that if you edit a card and change priority, color is correct
     cardsArray.forEach((card) => {
-      card.style.backgroundColor = "lightgrey";
-    });
-
-    // get the cards with "High" priority
-    const highCards = cardsArray.filter(
-      (card) => card.querySelector("label").textContent === "High"
-    );
-
-    // set background to light red
-    highCards.forEach((card) => {
-      card.style.backgroundColor = "lightcoral";
+      if (card.querySelector("label").textContent === "High")
+      {
+        card.style.backgroundColor = "lightcoral";
+      }
+      else{
+        card.style.backgroundColor = "lightgrey";
+      }
+      
     });
   }
 }
